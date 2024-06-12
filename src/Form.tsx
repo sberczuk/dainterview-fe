@@ -55,11 +55,11 @@ export default function MyForm() {
             }
         ).then(r => {
             //TODO: this always returns an error status, even for inputs that have a good response
-            // if (!r.ok) {
-            //     setAnswer("there was a error")
-            //     console.log(r.status)
-            //     throw new Error("Network response was not OK");
-            // }
+            if (!r.ok) {
+                setAnswer("there was a error")
+                console.log(r.status)
+                throw new Error("Network response was not OK");
+            }
             return r.json()
         }).then(d => {
             console.log("json")
