@@ -28,6 +28,11 @@ export default function MyForm() {
 
     const [answer, setAnswer] = React.useState('Answer will appear here');
 
+    async function errorAlert(p, code, text: string) {
+        const t = await p.text()
+        alert(code + " " + text+ " " + t)
+    }
+
     async function handleSubmit(e: any) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -58,7 +63,7 @@ export default function MyForm() {
                 //TODO: push the error message into the payload
                 console.log(r.statusText)
                 setAnswer("there was a error: " + r.statusText)
-                console.log(r.status)
+                errorAlert(r, r.status, r.statusText)
                 throw new Error("Network response was not OK");
             }
             return r.json()
