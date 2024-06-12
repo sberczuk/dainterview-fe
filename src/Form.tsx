@@ -9,11 +9,17 @@ export function isValidEquation(v: string) {
     return reg.test(v)
 }
 
+export function Answer(props: { aValue: string }) {
+    console.log(props.aValue);
+    return (
+        <h1>{props.aValue}</h1>
+    )
+}
+
 export default function MyForm() {
     const [value, setValue] = React.useState('');
-    []
+
     const [answer, setAnswer] = React.useState('Answer will appear here');
-    []
 
     async function handleSubmit(e: any) {
         // Prevent the browser from reloading the page
@@ -29,21 +35,32 @@ export default function MyForm() {
         const payload = {
             input: value
         }
+
+
         fetch('http://localhost:3000/eval/',
             {
                 method: form.method, body: JSON.stringify(payload),
                 headers: {
                     "Content-Type": "application/json",
-                    // "Accept": "application/json",
+                    "Accept": "application/json",
                 },
-                mode: "no-cors"
+                // mode: "no-cors"
             }
         ).then(r => {
-            console.log("GOT A RESPONSE")
-            // setAnswer(data.answer)
+            //TODO: this always returns an error status, even for inputs that have a good response
+            // if (!r.ok) {
+            //     setAnswer("there was a error")
+            //     console.log(r.status)
+            //     throw new Error("Network response was not OK");
+            // }
+            return r.json()
+        }).then(d => {
 
-            console.log(r.text())
-            return r.text()
+            setAnswer(d.data)
+
+            //TODO I'm consistently getting an error
+            console.log(d)
+
         }).then(data =>
             console.log(data)
         )
@@ -51,7 +68,6 @@ export default function MyForm() {
 
     }
 
-    //TEST THIS for blanks
     function onChange(e: any) {
         const v = e.target.value;
         if (/^\s*$/.test(v)) {
@@ -64,10 +80,13 @@ export default function MyForm() {
         }
         // check length
         setValue(v)
+
     }
 
     return (
         <>
+
+            <Answer aValue={answer}/>
             <h1>{answer}</h1>
             <form method="post" onSubmit={handleSubmit}>
                 <label>

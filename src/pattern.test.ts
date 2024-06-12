@@ -8,6 +8,6 @@ test('accepts correct symbols', ()=> {
 test('accepts times symbol', ()=> {
     expect (isValidEquation("1*4")).toBe(true)
 })
-test('accepts minus symbols', ()=> {
-    expect (isValidEquation("1-4")).toBe(true)
+test('accepts blanks with symbols', ()=> {
+    expect (isValidEquation("1 - 4 ")).toBe(true)
 })
