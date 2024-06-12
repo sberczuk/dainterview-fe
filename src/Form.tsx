@@ -10,11 +10,18 @@ export function isValidEquation(v: string) {
 }
 
 export function Answer(props: { aValue: string }) {
-    console.log(props.aValue);
+    useEffect(() => {
+
+
+        console.log('useEffect logic ran props are ' + props.aValue);
+    }); //
+
+    console.log("value is :" + props.aValue);
     return (
-        <h1>{props.aValue}</h1>
+        <h1>answer: {props.aValue}</h1>
     )
 }
+
 
 export default function MyForm() {
     const [value, setValue] = React.useState('');
@@ -55,14 +62,17 @@ export default function MyForm() {
             // }
             return r.json()
         }).then(d => {
-
-            setAnswer(d.data)
-
-            //TODO I'm consistently getting an error
+            console.log("json")
             console.log(d)
+            return  d
 
-        }).then(data =>
-            console.log(data)
+        }).then(data =>{
+            console.log("setting answer data:",  data.answer);
+            
+            console.log(data.answer)
+            setAnswer(data.answer)
+        }
+
         )
 
 
@@ -87,7 +97,6 @@ export default function MyForm() {
         <>
 
             <Answer aValue={answer}/>
-            <h1>{answer}</h1>
             <form method="post" onSubmit={handleSubmit}>
                 <label>
                     Text input: <textarea name="input" placeholder="Enter an equation to solve"
