@@ -68,7 +68,7 @@ export default function MyForm() {
 
         }).then(data =>{
             console.log("setting answer data:",  data.answer);
-            
+
             console.log(data.answer)
             setAnswer(data.answer)
         }
