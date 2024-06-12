@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 
 // TODO this validation needs to ignore new lines
 export function isValidEquation(v: string) {
-    const reg = new RegExp(/^[\d\\+\-*\/ \(\)]+$/);
+    const reg = new RegExp(/^[\d\\+\-*\/ \(\)\.]+$/);
     // const reg = new RegExp(/^([\d+\\+//-//*/])+$/);
     return reg.test(v)
 }

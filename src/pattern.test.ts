@@ -15,3 +15,7 @@ test('accepts blanks with symbols', ()=> {
 test('accepts parens with symbols', ()=> {
     expect (isValidEquation("(1 - 4 )")).toBe(true)
 })
+
+test('accepts decimals with symbols', ()=> {
+    expect (isValidEquation("(1.4 - 4 )")).toBe(true)
+})
