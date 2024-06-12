@@ -54,9 +54,10 @@ export default function MyForm() {
                 // mode: "no-cors"
             }
         ).then(r => {
-            //TODO: this always returns an error status, even for inputs that have a good response
             if (!r.ok) {
-                setAnswer("there was a error")
+                //TODO: push the error message into the payload
+                console.log(r.statusText)
+                setAnswer("there was a error: " + r.statusText)
                 console.log(r.status)
                 throw new Error("Network response was not OK");
             }
