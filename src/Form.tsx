@@ -59,14 +59,12 @@ export default function MyForm() {
             }
             return r.json()
         }).then(d => {
+            // this is in place for debugging
             console.log("json")
             console.log(d)
             return  d
-
         }).then(data =>{
-            console.log("setting answer data:",  data.answer);
 
-            console.log(data.answer)
             setAnswer(data.answer)
         }
 
