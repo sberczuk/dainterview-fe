@@ -95,8 +95,8 @@ export default function MyForm() {
             <form method="post" onSubmit={handleSubmit}>
                 <label>
                     Enter Equation: <textarea name="input" placeholder="Enter an equation to solve. Use digits and +-/* only. Text Area can be resized."
-                                              rows={10}
-                                              cols={100}
+                                              rows={5}
+                                              cols={75}
                                           onChange={onChange}/>
                 </label>
                 <hr/>
