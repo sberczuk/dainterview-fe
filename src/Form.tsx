@@ -36,14 +36,6 @@ export default function MyForm() {
     async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
         // Prevent the browser from reloading the page
         e.preventDefault();
-
-        // Read the form data
-        // const form = e.target;
-        // const formData = new FormData(form);
-        // const formJson = Object.fromEntries(formData.entries());
-        // console.log(formJson);
-
-        // set no-cors to make local testing easier. In real life we'd have a proxy or some other more secure setup
         const payload = {
             input: value
         }
@@ -56,7 +48,6 @@ export default function MyForm() {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                // mode: "no-cors"
             }
         ).then(r => {
             if (!r.ok) {
