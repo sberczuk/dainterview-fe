@@ -1,7 +1,6 @@
 
 import './App.css'
-import MyForm, {Answer} from "./Form.tsx";
-import React from "react";
+import MyForm  from "./Form.tsx";
 import calculon from './assets/calculon.jpeg'
 
 

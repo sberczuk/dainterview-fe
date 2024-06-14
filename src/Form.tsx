@@ -28,20 +28,20 @@ export default function MyForm() {
 
     const [answer, setAnswer] = React.useState('Answer will appear here');
 
-    async function errorAlert(p, code, text: string) {
+    async function errorAlert(p: Response, code:number, text: string) {
         const t = await p.text()
         alert(code + " " + text+ " " + t)
     }
 
-    async function handleSubmit(e: any) {
+    async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
         // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
+        // const form = e.target;
+        // const formData = new FormData(form);
+        // const formJson = Object.fromEntries(formData.entries());
+        // console.log(formJson);
 
         // set no-cors to make local testing easier. In real life we'd have a proxy or some other more secure setup
         const payload = {
@@ -51,7 +51,7 @@ export default function MyForm() {
 
         fetch('http://localhost:3000/eval/',
             {
-                method: form.method, body: JSON.stringify(payload),
+                method: 'POST', body: JSON.stringify(payload),
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
